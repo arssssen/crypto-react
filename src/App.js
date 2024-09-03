@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Link, Route, Routes } from "react-router-dom";
+import Cryptocard from "./components/Cryptocard";
+import Navbar from "./components/Navbar";
+import Cryptocurrencies from "./pages/Cryptocurrencies";
+import News from "./pages/News";
+import Homepage from "./pages/Homepage";
+import { Layout } from "antd";
+import Sider from "antd/es/layout/Sider";
+import { Content } from "antd/es/layout/layout";
 function App() {
+  const arr =['BTC', 'ETH', 'USDT', 'BNB', 'SOL'] ;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+
+      <Layout className="navbar">
+        <Sider>
+        <Navbar />
+
+        </Sider>
+      </Layout>
+
+      <Layout >
+        <Content>
+        <Routes>
+          <Route path='/' element={<Homepage/>} />
+          <Route path='/crypto-currencies' element={<Cryptocurrencies/>} />
+          <Route path='/news' element={<News/>} />
+        </Routes>
+        </Content>
+      </Layout>
+      {/* <div className="navbar">
+      </div> */}
+      
+
+      
+      
     </div>
   );
 }
