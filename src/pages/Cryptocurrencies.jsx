@@ -1,8 +1,9 @@
 import React from 'react'
+import CoinsGrid from '../components/CoinsGrid'
 
 const Cryptocurrencies = () => {
   return (
-    <div>Cryptocurrencies</div>
+    <div><CoinsGrid/></div>
   )
 }
 

@@ -1,0 +1,16 @@
+.cryptocard{
+    padding: 0;
+}
+.cryptocard-header{
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cryptocard-img{
+    width: 40px;
+}
+.cryptocard-img img{
+    width: 100%;
+}

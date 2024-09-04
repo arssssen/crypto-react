@@ -4,36 +4,27 @@ import Navbar from "./components/Navbar";
 import Cryptocurrencies from "./pages/Cryptocurrencies";
 import News from "./pages/News";
 import Homepage from "./pages/Homepage";
-import { Layout } from "antd";
+import { Flex, Layout } from "antd";
 import Sider from "antd/es/layout/Sider";
 import { Content } from "antd/es/layout/layout";
 function App() {
-  const arr =['BTC', 'ETH', 'USDT', 'BNB', 'SOL'] ;
   return (
     <div className="app">
-
       <Layout className="navbar">
         <Sider>
-        <Navbar />
-
+          <Navbar />
         </Sider>
       </Layout>
 
-      <Layout >
+      <Layout className="main">
         <Content>
-        <Routes>
-          <Route path='/' element={<Homepage/>} />
-          <Route path='/crypto-currencies' element={<Cryptocurrencies/>} />
-          <Route path='/news' element={<News/>} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/crypto-currencies" element={<Cryptocurrencies />} />
+            <Route path="/news" element={<News />} />
+          </Routes>
         </Content>
       </Layout>
-      {/* <div className="navbar">
-      </div> */}
-      
-
-      
-      
     </div>
   );
 }
