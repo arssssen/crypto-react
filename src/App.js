@@ -36,7 +36,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/crypto-currencies" element={<Cryptocurrencies />} />
             <Route path="/news" element={<News />} />
-            <Route path="/crypto/:coindId" element={<CoinDetails />} />
+            <Route path="/crypto/:coinId" element={<CoinDetails />} />
           </Routes>
         </Content>
       </Layout>

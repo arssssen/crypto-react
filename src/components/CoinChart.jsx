@@ -13,6 +13,8 @@ import {
 } from "chart.js";
 import { useGetCoinPriceHistoryQuery } from "../services/cryptoApi";
 import moment from "moment";
+import { useParams } from "react-router-dom";
+import millify from "millify";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -23,9 +25,12 @@ ChartJS.register(
   Legend
 );
 const CoinChart = () => {
+  const { coinId } = useParams();
+  console.log(coinId);
+
   const data = useGetCoinPriceHistoryQuery({
-    id: "Qwsogvtv82FCd",
-    timePeriod: "24h",
+    id: coinId,
+    timePeriod: "7d",
   });
   console.log(data);
 

@@ -15,8 +15,8 @@ import {
 import { Avatar, Col, Row, Typography } from "antd";
 import CoinChart from "../components/CoinChart";
 const CoinDetails = () => {
-  const { coindId } = useParams();
-  const { data } = useGetCoinDetailQuery(coindId);
+  const { coinId } = useParams();
+  const { data } = useGetCoinDetailQuery(coinId);
   const { Title, Text } = Typography;
   const cryptoDetails = data?.data?.coin;
   const dailyVolume = cryptoDetails?.["24hVolume"];
