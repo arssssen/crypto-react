@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import CoinsGrid from "../components/CoinsGrid";
-import { Button, Col, Row, Statistic, Typography } from "antd";
+import { Col, Row, Statistic, Typography } from "antd";
 import { Link } from "react-router-dom";
 
 const Homepage = () => {

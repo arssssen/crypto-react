@@ -76,3 +76,26 @@ a:hover{
   justify-content: space-between;
   align-items: flex-end;
 }
+
+.stats-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px ;
+}
+.stats-container h2{
+  font-weight: 700;
+  color: var(--main-accent);
+}
+.coin-stats{
+  display: flex;
+  justify-content: space-between;
+  font-size: 1em;
+  opacity: .9;
+  padding: 20px;
+  border-bottom: 1px solid var(--light-blue);
+  .coin-stats-name{
+    display: flex;
+    gap: 10px;
+  }
+}
