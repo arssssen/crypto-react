@@ -1,25 +1,26 @@
 @import url(styles/cryptocard.css);
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-:root{
+:root {
   --text-primary: #1a1a1a;
   --bg-primary: #fff;
   --bg-secondary: #f9f9f9;
@@ -29,73 +30,71 @@ code {
   --border: #d9d9d9;
 }
 
-
-a{
-  color:inherit !important;
+a {
+  color: inherit !important;
   text-decoration: none;
 }
 
-a:hover{
+a:hover {
   color: var(--main-accent) !important;
 }
-
-
-.app{
+.nav-menu a:hover {
+  color: inherit !important;
+}
+.app {
   display: flex;
 }
 
-.navbar{
-  position: sticky;
+.navbar {
+  overflow: auto;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   height: 100vh;
   inset-inline-start: 0;
-  scrollbar-width: 'thin';
-  scrollbar-color: 'unset';
+  scrollbar-width: "thin";
+  scrollbar-color: "unset";
   background-color: var(--dark-blue);
-  flex: 0.2;
-
 }
 
-.main{
+.main {
   padding: 40px;
-  flex: 0.8;
   width: 100%;
 }
-.logo-container{
-  
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.logo-container {
   padding: 5px;
 }
 
-.crypto-top-heading-container{
+.crypto-top-heading-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
 
-.stats-container{
+.stats-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 40px ;
+  gap: 40px;
 }
-.stats-container h2{
+.stats-container h2 {
   font-weight: 700;
   color: var(--main-accent);
 }
-.coin-stats{
+.coin-stats {
   display: flex;
   justify-content: space-between;
   font-size: 1em;
-  opacity: .9;
+  opacity: 0.9;
   padding: 20px;
   border-bottom: 1px solid var(--light-blue);
-  .coin-stats-name{
-    display: flex;
-    gap: 10px;
-  }
+}
+.coin-stats-name {
+  display: flex;
+  gap: 10px;
+}
+
+a:hover:active {
+  color: initial !important;
 }

@@ -9,16 +9,29 @@ import { Layout } from "antd";
 import Sider from "antd/es/layout/Sider";
 import { Content } from "antd/es/layout/layout";
 function App() {
+  const siderStyle = {
+    overflow: 'auto',
+    height: '100vh',
+    position: 'fixed',
+    insetInlineStart: 0,
+    top: 0,
+    bottom: 0,
+    scrollbarWidth: 'thin',
+    scrollbarColor: 'unset',
+  };
   return (
-    <div className="app">
-      <Layout className="navbar ar">
-        <Sider>
+    <Layout hasSider>
+        <Sider style={siderStyle}>
           <Navbar />
         </Sider>
-      </Layout>
 
-      <Layout className="main">
-        <Content>
+      <Layout style={{
+          marginInlineStart: 200,
+          height: '100vh'
+        }}>
+        <Content style={{
+          margin: 40,
+        }}>
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/crypto-currencies" element={<Cryptocurrencies />} />
@@ -27,7 +40,7 @@ function App() {
           </Routes>
         </Content>
       </Layout>
-    </div>
+    </Layout>
   );
 }
 

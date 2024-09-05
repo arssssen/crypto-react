@@ -4,9 +4,17 @@ import {
   MenuOutlined,
   MoneyCollectOutlined,
 } from "@ant-design/icons";
-import { Avatar, Button, Menu, Row, Typography } from "antd";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import {
+  Avatar,
+  Button,
+  ConfigProvider,
+  Flex,
+  Menu,
+  Row,
+  Typography,
+} from "antd";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import icon from "../img/Ethereum-ETH-icon.png";
 const { Title } = Typography;
 const items = [
@@ -26,21 +34,22 @@ const items = [
     label: <Link to="/news">News</Link>,
   },
 ];
+
 const Navbar = () => {
   return (
-    <div className="navbar-container">
-      <div className="logo-container">
+    <div>
+      <Flex align="center" gap={10} className="logo-container">
         <Avatar src={icon} />
         <Title level={3} style={{ color: "#fff" }}>
           <Link to="/">Cryptostock</Link>
         </Title>
-      </div>
-
+      </Flex>
       <Menu
-        defaultSelectedKeys={[""]}
+        defaultSelectedKeys={"home"}
         mode="inline"
         theme="dark"
         items={items}
+        className="nav-menu"
       />
     </div>
   );

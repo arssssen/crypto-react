@@ -13,6 +13,7 @@ import {
   StopOutlined,
 } from "@ant-design/icons";
 import { Avatar, Col, Row, Typography } from "antd";
+import CoinChart from "../components/CoinChart";
 const CoinDetails = () => {
   const { coindId } = useParams();
   const { data } = useGetCoinDetailQuery(coindId);
@@ -98,43 +99,59 @@ const CoinDetails = () => {
   console.log(coinStats);
   return (
     <div>
-      <Col className="stats-container">
-        <Col className="coin-value-stats">
-          <Col className="coin-value-stats-heading">
-            <Title level={2}>{cryptoDetails?.name} Statistic</Title>
-            <p>
-              An overview demonstrating the stats of {cryptoDetails?.name} such
-              as base, price, rank and volume
-            </p>
+      <Col>
+        <Row>
+          <Col>
+            <Title>{cryptoDetails?.name}</Title>
+            <Text>
+              {cryptoDetails?.name} live price in US Dollar (USD). View value
+              statistics, market cap and supply
+            </Text>
           </Col>
-          {coinStats.map(({ title, icon, value }) => (
-            <Col className="coin-stats" key={title}>
-              <Col className="coin-stats-name">
-                <Text>{icon}</Text>
-                <Text>{title}</Text>
+        </Row>
+        <Row>
+          <Col className="stats-container">
+            <Col className="coin-value-stats">
+              <Col className="coin-value-stats-heading">
+                <Title level={2}>{cryptoDetails?.name} Statistic</Title>
+                <p>
+                  An overview demonstrating the stats of {cryptoDetails?.name}{" "}
+                  such as base, price, rank and volume
+                </p>
               </Col>
-              <Text className="stats">{value}</Text>
+              {coinStats.map(({ title, icon, value }) => (
+                <Col className="coin-stats" key={title}>
+                  <Col className="coin-stats-name">
+                    <Text>{icon}</Text>
+                    <Text>{title}</Text>
+                  </Col>
+                  <Text className="stats">{value}</Text>
+                </Col>
+              ))}
             </Col>
-          ))}
-        </Col>
-        <Col className="coin-value-stats">
-          <Col className="coin-value-stats-heading">
-            <Title level={2}>{cryptoDetails?.name} Statistic</Title>
-            <p>
-              An overview demonstrating the stats of {cryptoDetails?.name} such
-              as base, price, rank and volume
-            </p>
+            <Col className="coin-value-stats">
+              <Col className="coin-value-stats-heading">
+                <Title level={2}>{cryptoDetails?.name} Statistic</Title>
+                <p>
+                  An overview demonstrating the stats of {cryptoDetails?.name}{" "}
+                  such as base, price, rank and volume
+                </p>
+              </Col>
+              {coinStatsTwo.map(({ title, icon, value }) => (
+                <Col className="coin-stats" key={title}>
+                  <Col className="coin-stats-name">
+                    <Text>{icon}</Text>
+                    <Text>{title}</Text>
+                  </Col>
+                  <Text className="stats">{value}</Text>
+                </Col>
+              ))}
+            </Col>
           </Col>
-          {coinStatsTwo.map(({ title, icon, value }) => (
-            <Col className="coin-stats" key={title}>
-              <Col className="coin-stats-name">
-                <Text>{icon}</Text>
-                <Text>{title}</Text>
-              </Col>
-              <Text className="stats">{value}</Text>
-            </Col>
-          ))}
-        </Col>
+        </Row>
+        <Row>
+          <CoinChart />
+        </Row>
       </Col>
     </div>
   );
