@@ -11,7 +11,7 @@ import { Content } from "antd/es/layout/layout";
 function App() {
   return (
     <div className="app">
-      <Layout className="navbar">
+      <Layout className="navbar ar">
         <Sider>
           <Navbar />
         </Sider>
