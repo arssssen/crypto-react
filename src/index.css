@@ -6,7 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
 }
 
 code {
@@ -94,7 +94,37 @@ a:hover {
   display: flex;
   gap: 10px;
 }
-
+.coin-value-stats,.coin-chart{
+  padding: 40px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03),0 1px 6px -1px rgba(0, 0, 0, 0.02),0 2px 4px 0 rgba(0, 0, 0, 0.02);
+}
+.coin-chart{
+  margin-top: 40px;
+}
 a:hover:active {
   color: initial !important;
+}
+
+.coin-heading-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: 1px solid var(--light-blue);
+  padding:20px 0;
+  gap: 10px;
+}
+
+.coin-heading-container .coin-name{
+  font-weight: 900;
+  color: var(--main-accent);
+}
+.loader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80vh;
 }

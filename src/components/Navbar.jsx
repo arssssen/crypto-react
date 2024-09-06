@@ -14,28 +14,48 @@ import {
   Typography,
 } from "antd";
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import icon from "../img/Ethereum-ETH-icon.png";
 const { Title } = Typography;
 const items = [
   {
     key: "home",
     icon: <HomeOutlined />,
-    label: <Link to="/">Home</Link>,
+    label: <NavLink to="/">Home</NavLink>,
   },
   {
     key: "cryptocurrency",
     icon: <MoneyCollectOutlined />,
-    label: <Link to="/crypto-currencies">Crypto Currencies</Link>,
+    label: <NavLink to="/crypto-currencies">Crypto Currencies</NavLink>,
   },
   {
     key: "news",
     icon: <BulbOutlined />,
-    label: <Link to="/news">News</Link>,
+    label: <NavLink to="/news">News</NavLink>,
   },
 ];
 
 const Navbar = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const [selectedKeys, setSelectedKeys] = useState([]);
+  useEffect(() => {
+    setSelectedKeys(currentPath);
+    switch (currentPath) {
+      case "/":
+        setSelectedKeys(["home"]);
+        break;
+      case "/crypto-currencies":
+        setSelectedKeys(["cryptocurrency"]);
+        break;
+      case "/news":
+        setSelectedKeys(["news"]);
+        break;
+      default:
+        setSelectedKeys([]);
+    }
+  }, [currentPath]);
   return (
     <div>
       <Flex align="center" gap={10} className="logo-container">
@@ -45,7 +65,7 @@ const Navbar = () => {
         </Title>
       </Flex>
       <Menu
-        defaultSelectedKeys={"home"}
+        selectedKeys={selectedKeys}
         mode="inline"
         theme="dark"
         items={items}

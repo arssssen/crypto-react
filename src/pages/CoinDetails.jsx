@@ -14,13 +14,15 @@ import {
 } from "@ant-design/icons";
 import { Avatar, Col, Row, Typography } from "antd";
 import CoinChart from "../components/CoinChart";
+import Loader from "../components/Loader";
 const CoinDetails = () => {
   const { coinId } = useParams();
-  const { data } = useGetCoinDetailQuery(coinId);
+  const { data, isFetching } = useGetCoinDetailQuery(coinId);
   const { Title, Text } = Typography;
   const cryptoDetails = data?.data?.coin;
   const dailyVolume = cryptoDetails?.["24hVolume"];
   console.log(cryptoDetails);
+
   const coinStats = [
     {
       title: "Price to usd",
@@ -96,13 +98,15 @@ const CoinDetails = () => {
       icon: <TrophyOutlined />,
     },
   ];
+  if (isFetching) return <Loader />;
+
   console.log(coinStats);
   return (
     <div>
       <Col>
-        <Row>
-          <Col>
-            <Title>{cryptoDetails?.name}</Title>
+        <Row className="coin-detail-container">
+          <Col span={24} className="coin-heading-container">
+            <Title className="coin-name">{cryptoDetails?.name}</Title>
             <Text>
               {cryptoDetails?.name} live price in US Dollar (USD). View value
               statistics, market cap and supply
@@ -111,7 +115,7 @@ const CoinDetails = () => {
         </Row>
         <Row>
           <Col className="stats-container">
-            <Col className="coin-value-stats">
+            <Col span={12} className="coin-value-stats">
               <Col className="coin-value-stats-heading">
                 <Title level={2}>{cryptoDetails?.name} Statistic</Title>
                 <p>
@@ -129,7 +133,7 @@ const CoinDetails = () => {
                 </Col>
               ))}
             </Col>
-            <Col className="coin-value-stats">
+            <Col span={12} className="coin-value-stats">
               <Col className="coin-value-stats-heading">
                 <Title level={2}>{cryptoDetails?.name} Statistic</Title>
                 <p>
@@ -150,7 +154,9 @@ const CoinDetails = () => {
           </Col>
         </Row>
         <Row>
-          <CoinChart />
+          <Col span={24}>
+            <CoinChart currentPrice={cryptoDetails?.price} />
+          </Col>
         </Row>
       </Col>
     </div>

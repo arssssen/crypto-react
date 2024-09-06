@@ -3,9 +3,10 @@ import { Avatar, Card, Col, Input, Row } from "antd";
 import millify from "millify";
 import { useGetCoinsQuery } from "../services/cryptoApi";
 import { Link } from "react-router-dom";
+import Loader from "./Loader";
 const CoinsGrid = ({ limited }) => {
   const limit = limited ? 12 : 48;
-  const { data } = useGetCoinsQuery(limit);
+  const { data, isFetching } = useGetCoinsQuery(limit);
   const [searchTerm, setSearchTerm] = useState("");
   const coins = data?.data?.coins || [];
 
@@ -18,6 +19,7 @@ const CoinsGrid = ({ limited }) => {
     console.log(filteredCoins);
   }, [coins, searchTerm]);
   console.log(data);
+  if (isFetching) return <Loader />;
 
   return (
     <div>
