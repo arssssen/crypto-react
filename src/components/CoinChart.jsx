@@ -103,7 +103,7 @@ const CoinChart = ({ currentPrice }) => {
           Current Price: $ {Math.floor(currentPrice)}
         </Typography.Title>
       </Col>
-      <Line data={chartData} options={options} />;
+      <Line data={chartData} options={options} />
     </Row>
   );
 };

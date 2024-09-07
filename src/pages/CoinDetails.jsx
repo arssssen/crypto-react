@@ -103,62 +103,69 @@ const CoinDetails = () => {
   console.log(coinStats);
   return (
     <div>
-      <Col>
-        <Row className="coin-detail-container">
-          <Col span={24} className="coin-heading-container">
-            <Title className="coin-name">{cryptoDetails?.name}</Title>
-            <Text>
-              {cryptoDetails?.name} live price in US Dollar (USD). View value
-              statistics, market cap and supply
-            </Text>
+      <Row className="coin-detail-container">
+        <Col span={24} className="coin-heading-container">
+          <Title className="coin-name">{cryptoDetails?.name}</Title>
+          <Text>
+            {cryptoDetails?.name} live price in US Dollar (USD). View value
+            statistics, market cap and supply
+          </Text>
+        </Col>
+      </Row>
+
+      <Row justify="center">
+        <Col span={24}>
+          <CoinChart currentPrice={cryptoDetails?.price} />
+        </Col>
+      </Row>
+
+      <Row style={{ marginTop: "24px" }} justify="space-between">
+        <Col className="coin-value-stats">
+          <Col span={24} className="coin-value-stats-heading">
+            <Title level={2}>{cryptoDetails?.name} Statistic</Title>
+            <p>
+              An overview demonstrating the stats of {cryptoDetails?.name} such
+              as base, price, rank and volume
+            </p>
           </Col>
-        </Row>
-        <Row>
-          <Col className="stats-container">
-            <Col span={12} className="coin-value-stats">
-              <Col className="coin-value-stats-heading">
-                <Title level={2}>{cryptoDetails?.name} Statistic</Title>
-                <p>
-                  An overview demonstrating the stats of {cryptoDetails?.name}{" "}
-                  such as base, price, rank and volume
-                </p>
+
+          {coinStats.map(({ title, icon, value }) => (
+            <Col span={24} className="coin-stats" key={title}>
+              <Col className="coin-stats-name">
+                <Text>{icon}</Text>
+                <Text>{title}</Text>
               </Col>
-              {coinStats.map(({ title, icon, value }) => (
-                <Col className="coin-stats" key={title}>
-                  <Col className="coin-stats-name">
-                    <Text>{icon}</Text>
-                    <Text>{title}</Text>
-                  </Col>
-                  <Text className="stats">{value}</Text>
-                </Col>
-              ))}
-            </Col>
-            <Col span={12} className="coin-value-stats">
-              <Col className="coin-value-stats-heading">
-                <Title level={2}>{cryptoDetails?.name} Statistic</Title>
-                <p>
-                  An overview demonstrating the stats of {cryptoDetails?.name}{" "}
-                  such as base, price, rank and volume
-                </p>
+              <Col>
+                <Text className="stats">{value}</Text>
               </Col>
-              {coinStatsTwo.map(({ title, icon, value }) => (
-                <Col className="coin-stats" key={title}>
-                  <Col className="coin-stats-name">
-                    <Text>{icon}</Text>
-                    <Text>{title}</Text>
-                  </Col>
-                  <Text className="stats">{value}</Text>
-                </Col>
-              ))}
             </Col>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={24}>
-            <CoinChart currentPrice={cryptoDetails?.price} />
-          </Col>
-        </Row>
-      </Col>
+          ))}
+        </Col>
+
+        <Col className="coin-value-stats">
+          <Row>
+            <Col className="coin-value-stats-heading">
+              <Title level={2}>{cryptoDetails?.name} Statistic</Title>
+              <p>
+                An overview demonstrating the stats of {cryptoDetails?.name}{" "}
+                such as base, price, rank and volume
+              </p>
+            </Col>
+          </Row>
+
+          {coinStatsTwo.map(({ title, icon, value }) => (
+            <Row className="coin-stats" key={title}>
+              <Col className="coin-stats-name">
+                <Text>{icon}</Text>
+                <Text>{title}</Text>
+              </Col>
+              <Col>
+                <Text className="stats">{value}</Text>
+              </Col>
+            </Row>
+          ))}
+        </Col>
+      </Row>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const newsApiHeaders = {
   "X-RapidAPI-Key": "5f6e1c9d2dmsh5cb557b27868790p126403jsn5433c88336d6",
-  "X-RapidAPI-Host": "real-time-finance-data.p.rapidapi.com",
+  "X-RapidAPI-Host": "cryptocurrency-news2.p.rapidapi.com",
 };
 
 const createRequest = (url) => ({
@@ -11,13 +11,13 @@ const createRequest = (url) => ({
 export const newsApi = createApi({
   reducerPath: "newsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://real-time-finance-data.p.rapidapi.com",
+    baseUrl: "https://cryptocurrency-news2.p.rapidapi.com/v1",
   }),
   endpoints: (builder) => ({
     getNews: builder.query({
-      query: (type) =>
+      query: () =>
         createRequest(
-          `/market-trends?trend_type=${type}&country=us&language=en'`
+          `/coindesk`
         ),
     }),
   }),
